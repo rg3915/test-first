@@ -1,26 +1,28 @@
+import unittest
+
+
 def par(n):
     if n % 2 == 0:
         return True
     return False
 
 
-def assert_equal(result, expected):
-    from sys import _getframe
-    msg = 'Fail: Line {} got {} expecting {}'
-    if not result == expected:
-        current = _getframe()
-        caller = current.f_back
-        line_no = caller.f_lineno
-        print(msg.format(line_no, result, expected))
+class EvenNumberTest(unittest.TestCase):
 
+    def test_0(self):
+        self.assertEqual(par(0), True)
 
-def tests():
-    assert_equal(par(0), True)
-    assert_equal(par(1), False)
-    assert_equal(par(2), True)
-    assert_equal(par(4), True)
-    assert_equal(par(42), True)
+    def test_1(self):
+        self.assertEqual(par(1), False)
 
+    def test_2(self):
+        self.assertEqual(par(2), True)
+
+    def test_4(self):
+        self.assertEqual(par(4), True)
+
+    def test_42(self):
+        self.assertEqual(par(42), True)
 
 if __name__ == '__main__':
-    tests()
+    unittest.main()
