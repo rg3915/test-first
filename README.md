@@ -135,7 +135,7 @@ Line 19 False
 
 ### Exemplo 3
 
-Com [unittest][https://docs.python.org/3/library/unittest.html] fica tudo mais simples e mais completo.
+Com [unittest][0] fica tudo mais simples e mais completo.
 
 ```python
 import unittest
@@ -365,3 +365,4 @@ $ python media.py
  OK  got: 42.0 expected: 42
 ```
 
+[0]: https://docs.python.org/3/library/unittest.html
