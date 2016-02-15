@@ -30,31 +30,31 @@ KeyStrPress Return KeyStrRelease Return
 EOF
 
 # xmacroplay
-xmacroplay -d 5 < temp/ctrl_o.txt
-sleep 0.5
+xmacroplay -d 3 < temp/ctrl_o.txt
+sleep 0.3
 for i in $(seq 1 15); do xmacroplay -d 3 < temp/down.txt; done
-sleep 0.5
-xmacroplay -d 5 < temp/alternar.txt
-sleep 0.5
-xmacroplay -d 5 < temp/ctrl_e.txt
-sleep 0.5
+sleep 0.3
+xmacroplay -d 3 < temp/alternar.txt
+sleep 0.3
+xmacroplay -d 3 < temp/ctrl_e.txt
+sleep 0.3
 for i in $(seq 1 3); do 
-    xmacroplay -d 5 < temp/p.txt
+    xmacroplay -d 3 < temp/p.txt
     sleep 0.3
-    xmacroplay -d 5 < temp/alternar.txt
+    xmacroplay -d 3 < temp/alternar.txt
 done
-xmacroplay -d 5 < temp/alternar.txt
+xmacroplay -d 3 < temp/alternar.txt
 for i in $(seq 1 2); do 
-    xmacroplay -d 5 < temp/alternar.txt
+    xmacroplay -d 3 < temp/alternar.txt
     sleep 0.3
     for i in $(seq 1 5); do xmacroplay -d 3 < temp/zoom.txt; done
 done
 for i in $(seq 1 2); do 
     sleep 0.3
-    xmacroplay -d 5 < temp/alternar.txt
+    xmacroplay -d 3 < temp/alternar.txt
 done
-xmacroplay -d 5 < temp/list.txt
+xmacroplay -d 3 < temp/list.txt
 for i in $(seq 1 2); do 
     sleep 0.3
-    xmacroplay -d 5 < temp/alternar.txt
+    xmacroplay -d 3 < temp/alternar.txt
 done
