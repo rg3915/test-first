@@ -1,5 +1,7 @@
+rm *.py
 rm -rf temp
 mkdir temp
+
 echo "KeyStrPress Control_L KeyStrPress Tab KeyStrRelease Tab KeyStrRelease Control_L" > temp/alternar.txt
 
 echo "KeyStrPress Control_L KeyStrPress l KeyStrRelease l KeyStrRelease Control_L" > temp/limpar.txt
@@ -238,24 +240,36 @@ KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/081.txt
 String def assert_true(expr, line):
 KeyStrPress Return KeyStrRelease Return
 String     try:
 KeyStrPress Return KeyStrRelease Return
 String         assert expr
 KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/082.txt
 String     except AssertionError:
 KeyStrPress Return KeyStrRelease Return
 String         print('Line', line, expr)
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/083.txt
 String def tests():
 KeyStrPress Return KeyStrRelease Return
 String     assert_true(par(0) == True, '15')
 KeyStrPress Return KeyStrRelease Return
 String     assert_true(par(1) == False, '16')
 KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/084.txt
 String     assert_true(par(2) == True, '17')
 KeyStrPress Return KeyStrRelease Return
 String     assert_true(par(4) == True, '18')
@@ -385,9 +399,9 @@ String     pass
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
-String def test(got, expected):
+String def test(obtido, esperado):
 KeyStrPress Return KeyStrRelease Return
-String     if got == expected:
+String     if obtido == esperado:
 KeyStrPress Return KeyStrRelease Return
 String         prefix = ' OK '
 KeyStrPress Return KeyStrRelease Return
@@ -395,14 +409,20 @@ String     else:
 KeyStrPress Return KeyStrRelease Return
 String         prefix = '  X '
 KeyStrPress Return KeyStrRelease Return
-String     print('{} got: {} expected: {}'.format(prefix, repr(got), repr(expected)))
+String     print('{} obtido: {} esperado: {}'.format(prefix, repr(obtido), repr(esperado)))
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/140.txt
 String def main():
 KeyStrPress Return KeyStrRelease Return
 String     test(media(1, 2), 1.5)
 KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/141.txt
 String     test(media(1, 3), 2)
 KeyStrPress Return KeyStrRelease Return
 String     test(media(2, 4), 3)
@@ -463,305 +483,368 @@ EOF
 
 
 # xmacroplay ----------------------------------------------
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 10 < temp/limpar.txt
-sleep 1
-xmacroplay -d 60 < temp/opennumeropar.txt
-sleep 1
-xmacroplay -d 15 < temp/setnu.txt
-sleep 1
-xmacroplay -d 10 < temp/deleteall.txt # TIRAR
-sleep 1
-xmacroplay -d 10 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/01.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+answer="s"
 
-# python01.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 60 < temp/python01.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+continuar(){
+    read -p "Deseja continuar? (S/n): " answer
+    answer=${answer:-s}
+    if [ "$answer" == "s" ]; then continue; fi
+}
 
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 10 < temp/limpar.txt
+# sleep 1
+# xmacroplay -d 60 < temp/opennumeropar.txt
+# sleep 1
+# xmacroplay -d 15 < temp/setnu.txt
+# sleep 1
+# xmacroplay -d 10 < temp/deleteall.txt # TIRAR
+# sleep 1
+# xmacroplay -d 10 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/01.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# 02.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/goto_line1.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/02.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # python01.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 60 < temp/python01.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-# python01.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 60 < temp/python01.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # continuar
 
+# # 02.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/goto_line1.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/02.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# 03.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/goto_line1.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/03.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
-
-# python01.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 60 < temp/python01.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # python01.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 60 < temp/python01.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
 
-# 04.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/goto_line8.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/04.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # continuar
 
-# python01.sh
-xmacroplay -d 3 < temp/alternar.txt
+# # 03.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/goto_line1.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/03.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # python01.sh
+# xmacroplay -d 3 < temp/alternar.txt
 # xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 15 < temp/python01.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/python01.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-# 05.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/deletalinha2.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/05.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
 
-# python01.sh
-xmacroplay -d 3 < temp/alternar.txt
+# # continuar
+
+# # 04.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/goto_line8.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/04.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # python01.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# # xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 15 < temp/python01.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+# # continuar
+
+# # 05.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/deletalinha2.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/05.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # python01.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# # xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 15 < temp/python01.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+
+# # continuar
+
+# # 06.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/goto_line8.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/06.txt  # editar # manter velocidade 15
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # python01.sh
+# xmacroplay -d 3 < temp/alternar.txt
 # xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 15 < temp/python01.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 15 < temp/python01.txt
+# sleep 3
+# xmacroplay -d 3 < temp/limpar.txt
+# for i in $(seq 1 25); do xmacroplay -d 3 < temp/right.txt; done
+# xmacroplay -d 10 < temp/defmatematica.txt
+# sleep 5
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 30 < temp/matematica.txt
 
+# # matematica2.sh
+# xmacroplay -d 30 < temp/matematica2.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-# 06.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/goto_line8.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 15< temp/06.txt  # editar # manter velocidade
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # continuar
 
-# python01.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 15 < temp/python01.txt
-sleep 3
-xmacroplay -d 3 < temp/limpar.txt
-for i in $(seq 1 25); do xmacroplay -d 3 < temp/right.txt; done
-xmacroplay -d 10 < temp/defmatematica.txt
-sleep 3
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 30 < temp/matematica.txt
+# # separar
+# xmacroplay -d 3 < temp/alternar.txt
+# for i in $(seq 1 25); do xmacroplay -d 3 < temp/left.txt; done
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-# matematica2.sh
-xmacroplay -d 30 < temp/matematica2.txt
-sleep 3
+# # 07.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/deletalinha2.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/07.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# separar
-for i in $(seq 1 25); do xmacroplay -d 3 < temp/left.txt; done
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # python01.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 15 < temp/python01.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-# 07.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/deletalinha2.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/07.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# continuar
 
-# python01.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 15 < temp/python01.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # fechar
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/salvarfechar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# fechar
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-xmacroplay -d 60 < temp/salvarfechar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # 08.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/limpar.txt
+# sleep 1
+# xmacroplay -d 60 < temp/opennumeropar2.txt
+# # xmacroplay -d 10 < temp/deleteall.txt # TIRAR
+# sleep 1
+# xmacroplay -d 15 < temp/setnu.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/08.txt # editar
+# xmacroplay -d 3 < temp/alternar.txt
 
-# 08.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-xmacroplay -d 60 < temp/limpar.txt
-sleep 1
-xmacroplay -d 60 < temp/opennumeropar2.txt
-xmacroplay -d 10 < temp/deleteall.txt # TIRAR
-sleep 1
-xmacroplay -d 15 < temp/setnu.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/08.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# continuar
 
-# python02.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 60 < temp/python02.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # 081.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 5 < temp/081.txt # editar
+# xmacroplay -d 3 < temp/alternar.txt
 
-# 09.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/deletalinha2.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/09.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# continuar
 
-# python02.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 60 < temp/python02.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # 082.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 5 < temp/082.txt # editar
+# xmacroplay -d 3 < temp/alternar.txt
 
-# fechar
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-xmacroplay -d 60 < temp/salvarfechar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# continuar
 
-# 10.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-xmacroplay -d 60 < temp/limpar.txt
-sleep 1
-xmacroplay -d 15 < temp/opennumeropar3.txt
-xmacroplay -d 10 < temp/deleteall.txt # TIRAR
-sleep 1
-xmacroplay -d 15 < temp/setnu.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/10.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # 083.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 5 < temp/083.txt # editar
+# xmacroplay -d 3 < temp/alternar.txt
 
-# python03.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 60 < temp/python03.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# continuar
 
-# 11.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/deletalinha5.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/11.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # 084.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 5 < temp/084.txt # editar # manter velocidade 15
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# python03.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 15 < temp/python03.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # python02.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 60 < temp/python02.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-# fechar
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-xmacroplay -d 60 < temp/salvarfechar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# continuar
 
-# 12.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-xmacroplay -d 60 < temp/limpar.txt
-sleep 1
-xmacroplay -d 15 < temp/opennumeropar4.txt
-xmacroplay -d 10 < temp/deleteall.txt # TIRAR
-sleep 1
-xmacroplay -d 15 < temp/setnu.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/12.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # 09.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/goto_line1.txt
+# xmacroplay -d 60 < temp/deletalinha2.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/09.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# python04.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 60 < temp/python04.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # python02.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 60 < temp/python02.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-# 13.sh
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-sleep 1
-xmacroplay -d 60 < temp/goto_line1.txt
-sleep 1
-xmacroplay -d 60 < temp/deletalinha5.txt
-sleep 1
-xmacroplay -d 60 < temp/edit.txt
-sleep 1
-xmacroplay -d 5 < temp/11.txt # editar
-sleep 1
-xmacroplay -d 60 < temp/salvar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # continuar
 
-# python04.sh
-xmacroplay -d 3 < temp/alternar.txt
-xmacroplay -d 3 < temp/limpar.txt
-xmacroplay -d 15 < temp/python04.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # fechar
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/salvarfechar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# experimente -v
-xmacroplay -d 3 < temp/alternar.txt
-sleep 3
-xmacroplay -d 30 < temp/python04v.txt
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# # 10.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/limpar.txt
+# sleep 1
+# xmacroplay -d 60 < temp/opennumeropar3.txt
+# xmacroplay -d 10 < temp/deleteall.txt # TIRAR
+# sleep 1
+# xmacroplay -d 15 < temp/setnu.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/10.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
-# fechar
-for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
-xmacroplay -d 60 < temp/salvarfechar.txt
-xmacroplay -d 3 < temp/alternar.txt
+# # python03.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 60 < temp/python03.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+# # continuar
+
+# # 11.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/deletalinha5.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/11.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # python03.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 15 < temp/python03.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+# # continuar
+
+# # fechar
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/salvarfechar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # 12.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/limpar.txt
+# sleep 1
+# xmacroplay -d 60 < temp/opennumeropar4.txt
+# xmacroplay -d 10 < temp/deleteall.txt # TIRAR
+# sleep 1
+# xmacroplay -d 15 < temp/setnu.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/12.txt # editar # manter velocidade 15
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # python04.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 60 < temp/python04.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+# continuar
+
+# # 13.sh
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# sleep 1
+# xmacroplay -d 60 < temp/goto_line1.txt
+# sleep 1
+# xmacroplay -d 60 < temp/deletalinha5.txt
+# sleep 1
+# xmacroplay -d 60 < temp/edit.txt
+# sleep 1
+# xmacroplay -d 5 < temp/11.txt # editar
+# sleep 1
+# xmacroplay -d 60 < temp/salvar.txt
+# xmacroplay -d 3 < temp/alternar.txt
+
+# # python04.sh
+# xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 3 < temp/limpar.txt
+# xmacroplay -d 15 < temp/python04.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+# # experimente -v
+# xmacroplay -d 3 < temp/alternar.txt
+# sleep 3
+# xmacroplay -d 30 < temp/python04v.txt
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+# continuar
+
+# # fechar
+# for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+# xmacroplay -d 60 < temp/salvarfechar.txt
+# xmacroplay -d 3 < temp/alternar.txt
 
 # 14.sh
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 sleep 1
-xmacroplay -d 15 < temp/openmedia.txt
+xmacroplay -d 60 < temp/openmedia.txt
 xmacroplay -d 10 < temp/deleteall.txt # TIRAR
 sleep 1
 xmacroplay -d 15 < temp/setnu.txt
@@ -770,9 +853,22 @@ xmacroplay -d 60 < temp/edit.txt
 sleep 1
 for i in $(seq 1 30); do xmacroplay -d 3 < temp/left.txt; done
 xmacroplay -d 5 < temp/14.txt # editar
-sleep 1
+xmacroplay -d 3 < temp/alternar.txt
+
+# 140.sh
+for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+xmacroplay -d 5 < temp/140.txt # editar
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+# 141.sh
+for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+xmacroplay -d 5 < temp/141.txt # editar
 xmacroplay -d 60 < temp/salvar.txt
 xmacroplay -d 3 < temp/alternar.txt
+
+continuar
 
 # python05.sh
 xmacroplay -d 3 < temp/alternar.txt
@@ -781,6 +877,8 @@ for i in $(seq 1 30); do xmacroplay -d 3 < temp/right.txt; done
 xmacroplay -d 3 < temp/limpar.txt
 xmacroplay -d 60 < temp/python05.txt
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
+
+continuar
 
 # 15.sh
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
@@ -801,6 +899,8 @@ xmacroplay -d 3 < temp/limpar.txt
 xmacroplay -d 15 < temp/python05.txt
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
+continuar
+
 # 16.sh
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 sleep 1
@@ -817,7 +917,10 @@ xmacroplay -d 3 < temp/alternar.txt
 xmacroplay -d 3 < temp/alternar.txt
 xmacroplay -d 3 < temp/limpar.txt
 xmacroplay -d 15 < temp/python05.txt
+for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
-sleep 2
+continuar
+
+xmacroplay -d 3 < temp/alternar.txt
 for i in $(seq 1 5); do xmacroplay -d 3 < temp/zoom.txt; done
 xmacroplay -d 15 < temp/fim.txt
