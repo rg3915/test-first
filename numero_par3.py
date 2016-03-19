@@ -9,7 +9,7 @@ def par(n):
 
 class EvenNumberTest(unittest.TestCase):
 
-    def tests(self):
+    def test_par(self):
         self.assertTrue(par(0))
         self.assertFalse(par(1))
         self.assertTrue(par(2))

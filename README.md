@@ -7,7 +7,7 @@ Esta é a parte, talvez, mais importante do seu código, pois com ele você mesm
 Veja o mínimo de um teste em Python:
 
 ```python
-def tests():
+def test_par():
     assert par(0) == True
     assert par(1) == False
     assert par(2) == True
@@ -15,7 +15,7 @@ def tests():
     assert par(42) == True
 
 if __name__ == '__main__':
-    tests()
+    test_par()
 ```
 
 No exemplo queremos verificar se um número é par.
@@ -26,7 +26,7 @@ Resultado:
 $ python numero_par.py
 Traceback (most recent call last):
   File "numero_par.py", line 9, in <module>
-    tests()
+    test_par()
   File "numero_par.py", line 2, in tests
     assert par(0) == True
 NameError: name 'par' is not defined
@@ -38,7 +38,7 @@ Vamos escrever a função.
 def par(n):
     pass
 
-def tests():
+def test_par():
     assert par(0) == True
     assert par(1) == False
     assert par(2) == True
@@ -46,7 +46,7 @@ def tests():
     assert par(42) == True
 
 if __name__ == '__main__':
-    tests()
+    test_par()
 ```
 
 Resultado:
@@ -55,7 +55,7 @@ Resultado:
 $ python numero_par.py
 Traceback (most recent call last):
   File "numero_par.py", line 13, in <module>
-    tests()
+    test_par()
   File "numero_par.py", line 6, in tests
     assert par(0) == True
 AssertionError
@@ -79,7 +79,7 @@ def par(n):
     return False
 
 
-def tests():
+def test_par():
     assert par(0) == True
     assert par(1) == False
     assert par(2) == True
@@ -87,7 +87,7 @@ def tests():
     assert par(42) == True
 
 if __name__ == '__main__':
-    tests()
+    test_par()
 ```
 
 OK! Todos os testes passaram.
@@ -108,7 +108,7 @@ def assert_true(expr, line):
         print('Line', line, expr)
 
 
-def tests():
+def test_par():
     assert_true(par(0) == True, '15')
     assert_true(par(1) == False, '16')
     assert_true(par(2) == True, '17')
@@ -117,7 +117,7 @@ def tests():
 
 
 if __name__ == '__main__':
-    tests()
+    test_par()
 ```
 
 Aqui, nós verificamos em qual linha foi gerado o erro.
@@ -147,7 +147,7 @@ def par(n):
 
 class EvenNumberTest(unittest.TestCase):
 
-    def tests(self):
+    def test_par(self):
         self.assertTrue(par(0))
         self.assertFalse(par(1))
         self.assertTrue(par(2))

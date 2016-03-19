@@ -29,10 +29,15 @@ String l
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/digitar.txt
+String time source 01.sh
+EOF
+
+
 # xmacroplay
 xmacroplay -d 3 < temp/ctrl_o.txt
 sleep 0.3
-for i in $(seq 1 15); do xmacroplay -d 3 < temp/down.txt; done
+for i in $(seq 1 12); do xmacroplay -d 3 < temp/down.txt; done
 sleep 0.3
 xmacroplay -d 3 < temp/alternar.txt
 sleep 0.3
@@ -58,3 +63,4 @@ for i in $(seq 1 2); do
     sleep 0.3
     xmacroplay -d 3 < temp/alternar.txt
 done
+xmacroplay -d 3 < temp/digitar.txt

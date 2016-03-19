@@ -86,14 +86,14 @@ KeyStrPress Return KeyStrRelease Return
 EOF
 
 cat << EOF > temp/01.txt
-String def tests():
+String def test_par():
 KeyStrPress Return KeyStrRelease Return
 String     assert par(0) == True
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 String if __name__ == '__main__':
 KeyStrPress Return KeyStrRelease Return
-String     tests()
+String     test_par()
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -260,7 +260,7 @@ KeyStrPress Return KeyStrRelease Return
 EOF
 
 cat << EOF > temp/083.txt
-String def tests():
+String def test_par():
 KeyStrPress Return KeyStrRelease Return
 String     assert_true(par(0) == True, '15')
 KeyStrPress Return KeyStrRelease Return
@@ -279,7 +279,7 @@ KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 String if __name__ == '__main__':
 KeyStrPress Return KeyStrRelease Return
-String     tests()
+String     test_par()
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -306,7 +306,7 @@ KeyStrPress Return KeyStrRelease Return
 String class EvenNumberTest(unittest.TestCase):
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
-String     def tests(self):
+String     def test_par(self):
 KeyStrPress Return KeyStrRelease Return
 String         self.assertTrue(par(0))
 KeyStrPress Return KeyStrRelease Return
@@ -459,7 +459,6 @@ String )
 EOF
 
 cat << EOF > temp/fim.txt
-KeyStrPress Return KeyStrRelease Return
 KeyStrPress Return KeyStrRelease Return
 KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease 3 KeyStrRelease Shift_R
 String Fim!!!
@@ -614,7 +613,7 @@ xmacroplay -d 3 < temp/limpar.txt
 xmacroplay -d 15 < temp/python01.txt
 sleep 3
 xmacroplay -d 3 < temp/limpar.txt
-for i in $(seq 1 25); do xmacroplay -d 3 < temp/right.txt; done
+for i in $(seq 1 34); do xmacroplay -d 3 < temp/right.txt; done
 xmacroplay -d 10 < temp/defmatematica.txt
 sleep 5
 xmacroplay -d 3 < temp/limpar.txt
@@ -628,7 +627,7 @@ continuar
 
 # separar
 xmacroplay -d 3 < temp/alternar.txt
-for i in $(seq 1 25); do xmacroplay -d 3 < temp/left.txt; done
+for i in $(seq 1 40); do xmacroplay -d 3 < temp/left.txt; done
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
 # 07.sh
@@ -830,6 +829,7 @@ for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 # experimente -v
 xmacroplay -d 3 < temp/alternar.txt
 sleep 3
+for i in $(seq 1 10); do xmacroplay -d 3 < temp/right.txt; done
 xmacroplay -d 30 < temp/python04v.txt
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 
@@ -843,6 +843,7 @@ xmacroplay -d 3 < temp/alternar.txt
 # 14.sh
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
 sleep 1
+for i in $(seq 1 10); do xmacroplay -d 3 < temp/left.txt; done
 xmacroplay -d 60 < temp/openmedia.txt
 xmacroplay -d 10 < temp/deleteall.txt # TIRAR
 sleep 1
@@ -850,7 +851,7 @@ xmacroplay -d 15 < temp/setnu.txt
 sleep 1
 xmacroplay -d 60 < temp/edit.txt
 sleep 1
-for i in $(seq 1 38); do xmacroplay -d 3 < temp/left.txt; done
+for i in $(seq 1 33); do xmacroplay -d 3 < temp/left.txt; done
 xmacroplay -d 60 < temp/14.txt # editar
 xmacroplay -d 3 < temp/alternar.txt
 
@@ -872,7 +873,7 @@ continuar
 # python05.sh
 xmacroplay -d 3 < temp/alternar.txt
 sleep 1
-for i in $(seq 1 38); do xmacroplay -d 3 < temp/right.txt; done
+for i in $(seq 1 40); do xmacroplay -d 3 < temp/right.txt; done
 xmacroplay -d 3 < temp/limpar.txt
 xmacroplay -d 60 < temp/python05.txt
 for i in $(seq 1 2); do xmacroplay -d 3 < temp/alternar.txt; done
@@ -922,6 +923,7 @@ continuar
 
 xmacroplay -d 3 < temp/alternar.txt
 for i in $(seq 1 5); do xmacroplay -d 3 < temp/zoom.txt; done
+for i in $(seq 1 20); do xmacroplay -d 3 < temp/right.txt; done
 xmacroplay -d 15 < temp/fim.txt
 
-rm *.py
+rm -f *.py

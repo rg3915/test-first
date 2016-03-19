@@ -11,7 +11,7 @@ def assert_true(expr, line):
         print('Line', line, expr)
 
 
-def tests():
+def test_par():
     assert_true(par(0) == True, '15')
     assert_true(par(1) == False, '16')
     assert_true(par(2) == True, '17')
@@ -20,4 +20,4 @@ def tests():
 
 
 if __name__ == '__main__':
-    tests()
+    test_par()
